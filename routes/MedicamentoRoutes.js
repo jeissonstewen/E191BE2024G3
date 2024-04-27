@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Medicamento = require('../models/Medicamento');
 
-router.get('/', (req, res) => {
+router.get('/GetAll', (req, res) => {
     Medicamento.find()
         .then((data) => {
             res.json(data);

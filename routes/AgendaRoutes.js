@@ -14,7 +14,6 @@ router.get('/GetAll', (req, res) => {
 
 router.post('/Create', (req, res) => {
     const agenda = new Agenda({
-        idAgenda: req.body.idAgenda,
         tipoAgenda: req.body.tipoAgenda,
         estadoAgenda: req.body.estadoAgenda,
         fechaAgenda: req.body.fechaAgenda,
@@ -46,7 +45,6 @@ router.delete('/Delete/:id', (req, res) => {
 
 router.patch('/Update/:id', (req, res) => {
     const agenda = {
-        idAgenda: req.params.id,
         tipoAgenda: req.body.tipoAgenda,
         estadoAgenda: req.body.estadoAgenda,
         fechaAgenda: req.body.fechaAgenda,

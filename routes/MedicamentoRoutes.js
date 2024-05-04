@@ -12,7 +12,7 @@ router.get('/GetAll', (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/Create', (req, res) => {
     const medicamento = new Medicamento({
         codigoMedicamento: req.body.codigoMedicamento,
         nombreMedicamento: req.body.nombreMedicamento,
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/DeleteById/:id', (req, res) => {
     Medicamento.deleteOne({ _id: req.params.id })
         .then((data) => {
             res.json(data);
@@ -39,7 +39,7 @@ router.delete('/:id', (req, res) => {
         });
 });
 
-router.patch('/:id', (req, res) => {
+router.patch('/UpdateById/:id', (req, res) => {
     const medicamento = {
         codigoMedicamento: req.params.id,
         nombreMedicamento: req.body.nombreMedicamento,
@@ -57,5 +57,26 @@ router.patch('/:id', (req, res) => {
             res.json({ messsage: 'error en actualizando medicamento', error: err });
         });
 });
+
+router.get('/GetById/:id', (req, res) => {
+    Medicamento.findById(req.params.id)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo medicamento', error: err });
+        });
+});
+
+router.get('/GetNombre/:nombre', (req, res) => {
+    Medicamento.find({ nombreMedicamento: req.params.nombre })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo medicamento por nombre', error: err });
+        });
+});
+
 
 module.exports = router;

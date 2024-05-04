@@ -68,4 +68,57 @@ router.patch('/Update/:id', (req, res) => {
         });
 });
 
+router.get('/GetById/:id', (req, res) => {
+    Agenda.findById(req.params.id)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda', error: err });
+        });
+});
+
+router.get('/GetByIdMedico/:idMedico', (req, res) => {
+    Agenda.find({ 'medico.idMedico': req.params.idMedico })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda por medico', error: err });
+        });
+});
+
+router.get('/GetByIdConsultorio/:idConsultorio', (req, res) => {
+    Agenda.find({ 'consultorio.idConsultorio': req.params.idConsultorio })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda por consultorio', error: err });
+        });
+});
+
+router.get('/GetByDate/:date', (req, res) => {
+    const date = req.params.date;
+    Agenda.find({ fechaAgenda: date })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda por fecha', error: err });
+        });
+});
+
+router.get('/GetByDateHour/:date/:hour', (req, res) => {
+    const date = req.params.date;
+    const hour = req.params.hour;
+    Agenda.find({ fechaAgenda: date, horaInicio: hour })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda por fecha y hora', error: err });
+        });
+});
+
 module.exports = router;

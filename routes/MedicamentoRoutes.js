@@ -41,7 +41,7 @@ router.delete('/DeleteById/:id', (req, res) => {
 
 router.patch('/UpdateById/:id', (req, res) => {
     const medicamento = {
-        codigoMedicamento: req.params.id,
+        codigoMedicamento: req.body.codigoMedicamento,
         nombreMedicamento: req.body.nombreMedicamento,
         descripcionMedicamento: req.body.descripcionMedicamento
     };

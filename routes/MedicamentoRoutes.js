@@ -69,7 +69,8 @@ router.get('/GetById/:id', (req, res) => {
 });
 
 router.get('/GetNombre/:nombre', (req, res) => {
-    Medicamento.find({ nombreMedicamento: req.params.nombre })
+    const nombreMedicamento = req.params.nombre;
+    Medicamento.find({ nombreMedicamento: { $regex: new RegExp(nombreMedicamento, 'i') } })
         .then((data) => {
             res.json(data);
         })

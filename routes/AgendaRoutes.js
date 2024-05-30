@@ -119,4 +119,26 @@ router.get('/GetByDateHour/:date/:hour', (req, res) => {
         });
 });
 
+router.put('/UpdateStatus/:id', (req, res) => {
+    const agendaId = req.params.id;
+    const newStatus = req.body.estadoAgenda; // El nuevo estado se enviará en el cuerpo de la solicitud
+
+    Agenda.findByIdAndUpdate(
+        agendaId,
+        { estadoAgenda: newStatus },
+        { new: true } // Esta opción devuelve el documento actualizado
+    )
+    .then((updatedAgenda) => {
+        if (!updatedAgenda) {
+            return res.status(404).json({ message: 'Agenda no encontrada' });
+        }
+        res.json(updatedAgenda);
+    })
+    .catch((err) => {
+        res.status(500).json({ message: 'Error actualizando la agenda', error: err });
+    });
+});
+
+
+
 module.exports = router;

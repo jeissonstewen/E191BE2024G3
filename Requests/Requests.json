@@ -1,41 +1,31 @@
 {
-    "Post": {
-        "Medicamento": {
-            "codigoMedicamento": "1",
-            "nombreMedicamento": "Paracetamol",
-            "descripcionMedicamento": "Medicamento para el dolor de cabeza"
-        },
-        "Agenda": {
-            "idAgenda": "A100548",
-            "tipoAgenda": "Diurna",
-            "estadoAgenda": "Activa",
-            "fechaAgenda": "2021-10-10",
-            "horaInicio": "08:00",
-            "horaFin": "12:00",
-            "medico": {
-                "idMedico": "M1098123987",
-                "nombreMedico": "Juan",
-                "apellidoMedico": "Perez",
-                "especialidad": {
-                    "idEspecialidad": "E1",
-                    "nombreEspecialidad": "Medicina General",
-                    "codigoEspecialidad": "MG"
-                }
-            },
-            "consultorio": {
-                "idConsultorio": "C304",
-                "sede": {
-                    "idSede": "Sede Bucaramanga",
-                    "nombreSede": "Sede 1",
-                    "ciudad": "Bucaramanga",
-                    "direccionSede": "Calle 123 # 45-67",
-                    "ubicacion": {
-                        "idUbicacion": "U1",
-                        "nombreUbicacion": "Ubicacion 1"
-                    }
-                }
-            }
-
-        }
-    }
+	"_id": "662aa02ef275875ed0aeccbc",
+    	"tipoAgenda": "Diurna",
+    	"estadoAgenda": "Activa",
+    	"fechaAgenda": "2021-10-10T00:00:00.000Z",
+    	"horaInicio": "08:00",
+    	"horaFin": "12:00",
+   	"medico": {
+		"idMedico": "medico_001",
+		"codigo": "USR032",
+		"nombres": "Carlos",
+		"apellidos": "Reátiga",
+		"tipoDocumento": "DNI",
+		"documento": 12345678,
+		"estado": "Activo",
+		"especialidad": "Medicina General"
+	},
+    	"consultorio": {
+		"idConsultorio": "664e8cc862ffd37035952fd2",
+		"codigoConsultorio": "C-102",
+        "descripcionConsultorio": "consultorio dental",
+		"sede": {
+			"idSede": "662cff538e7c11b96075c6d5",
+			"nombreSede": "Sede Principal",
+			"direccionSede": "Calle 6 Carrera 33",
+			"departamento": "Nariño",
+			"municipio": "Pasto",
+			"codigoUbicacion": "COL-5"
+		}
+	}
 }

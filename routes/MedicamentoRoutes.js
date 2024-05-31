@@ -19,7 +19,7 @@ router.post('/Create', (req, res) => {
         laboratorio: req.body.laboratorio,
         componenteActivo: req.body.componenteActivo,        
         descripcionMedicamento: req.body.descripcionMedicamento
-    };
+    });
 
     medicamento
         .save()

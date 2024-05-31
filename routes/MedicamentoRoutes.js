@@ -14,10 +14,12 @@ router.get('/GetAll', (req, res) => {
 
 router.post('/Create', (req, res) => {
     const medicamento = new Medicamento({
-        codigoMedicamento: req.body.codigoMedicamento,
-        nombreMedicamento: req.body.nombreMedicamento,
+        codigo: req.body.codigo,
+        nombre: req.body.nombre,
+        laboratorio: req.body.laboratorio,
+        componenteActivo: req.body.componenteActivo,        
         descripcionMedicamento: req.body.descripcionMedicamento
-    });
+    };
 
     medicamento
         .save()
@@ -41,8 +43,10 @@ router.delete('/DeleteById/:id', (req, res) => {
 
 router.patch('/UpdateById/:id', (req, res) => {
     const medicamento = {
-        codigoMedicamento: req.body.codigoMedicamento,
-        nombreMedicamento: req.body.nombreMedicamento,
+        codigo: req.body.codigo,
+        nombre: req.body.nombre,
+        laboratorio: req.body.laboratorio,
+        componenteActivo: req.body.componenteActivo,        
         descripcionMedicamento: req.body.descripcionMedicamento
     };
 
@@ -70,7 +74,7 @@ router.get('/GetById/:id', (req, res) => {
 
 router.get('/GetNombre/:nombre', (req, res) => {
     const nombreMedicamento = req.params.nombre;
-    Medicamento.find({ nombreMedicamento: { $regex: new RegExp(nombreMedicamento, 'i') } })
+    Medicamento.find({ nombre: { $regex: new RegExp(nombreMedicamento, 'i') } })
         .then((data) => {
             res.json(data);
         })

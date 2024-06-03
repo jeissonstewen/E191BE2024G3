@@ -83,6 +83,10 @@ const AgendaSchema = new mongoose.Schema(
                 type: String,
                 required: true
             },
+            citas: {
+                type: Array,
+                default: []
+            },
             sede: {
                 idSede: {
                     type: String,

@@ -139,6 +139,16 @@ router.put('/UpdateStatus/:id', (req, res) => {
     });
 });
 
+router.get('/GetByMedico/:nombreMedico', (req, res) => {
+    const nombreMedico = req.params.nombreMedico;
+    Agenda.find({ 'medico.nombres': nombreMedico })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ messsage: 'error obteniendo agenda por nombre de medico', error: err });
+        });
+});
 
 
 module.exports = router;

@@ -96,28 +96,32 @@ router.get('/GetByIdConsultorio/:idConsultorio', (req, res) => {
         });
 });
 
+// fecha debe ser yyyy-mm-dd
 router.get('/GetByDate/:date', (req, res) => {
-    const date = req.params.date;
+    const date = new Date(req.params.date);
     Agenda.find({ fechaAgenda: date })
         .then((data) => {
             res.json(data);
         })
         .catch((err) => {
-            res.json({ messsage: 'error obteniendo agenda por fecha', error: err });
+            res.json({ message: 'error obteniendo agenda por fecha', error: err });
         });
 });
 
+
 router.get('/GetByDateHour/:date/:hour', (req, res) => {
-    const date = req.params.date;
+    const date = new Date(req.params.date);
     const hour = req.params.hour;
+
     Agenda.find({ fechaAgenda: date, horaInicio: hour })
         .then((data) => {
             res.json(data);
         })
         .catch((err) => {
-            res.json({ messsage: 'error obteniendo agenda por fecha y hora', error: err });
+            res.json({ message: 'error obteniendo agenda por fecha y hora', error: err });
         });
 });
+
 
 router.put('/UpdateStatus/:id', (req, res) => {
     const agendaId = req.params.id;
